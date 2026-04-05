@@ -1,14 +1,17 @@
 (() => {
+  const presentation = document.getElementById('presentation');
   const deck = document.getElementById('slides');
   const slides = Array.from(document.querySelectorAll('.slide'));
   const dotsWrap = document.getElementById('dots');
   const progressFill = document.getElementById('progressFill');
   const counterCurrent = document.getElementById('counterCurrent');
   const counterTotal = document.getElementById('counterTotal');
+  const currentTitle = document.getElementById('currentTitle');
   const hint = document.getElementById('hint');
   const prevZone = document.getElementById('prevZone');
   const nextZone = document.getElementById('nextZone');
   const fullscreenBtn = document.getElementById('fullscreenBtn');
+  const preloader = document.getElementById('preloader');
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let current = 0;
@@ -16,29 +19,37 @@
   let touchStartX = 0;
   let touchEndX = 0;
   let viewportWidth = window.innerWidth;
-
   const total = slides.length;
+
   counterTotal.textContent = String(total).padStart(2, '0');
   deck.style.width = `${total * 100}vw`;
 
   function buildDots() {
-    slides.forEach((_, index) => {
+    slides.forEach((slide, index) => {
       const dot = document.createElement('button');
       dot.type = 'button';
       dot.className = 'dot' + (index === 0 ? ' active' : '');
       dot.setAttribute('aria-label', `Ir a la diapositiva ${index + 1}`);
+      dot.setAttribute('title', slide.dataset.title || `Diapositiva ${index + 1}`);
       dot.addEventListener('click', () => goTo(index));
       dotsWrap.appendChild(dot);
     });
   }
 
-  function refreshAnimations(slide) {
+  function replayAnimations(slide) {
     const targets = slide.querySelectorAll('.animate, .clip-reveal, .scale-reveal, .swatch');
     targets.forEach((node) => {
       node.style.animation = 'none';
       void node.offsetWidth;
       node.style.animation = '';
     });
+  }
+
+  function updateTone() {
+    const activeSlide = slides[current];
+    const isDark = activeSlide.classList.contains('theme-dark');
+    presentation.classList.toggle('ui-on-dark', isDark);
+    presentation.classList.toggle('ui-on-light', !isDark);
   }
 
   function updateUI() {
@@ -53,9 +64,11 @@
     });
 
     counterCurrent.textContent = String(current + 1).padStart(2, '0');
+    currentTitle.textContent = slides[current].dataset.title || 'Presentación';
     progressFill.style.width = `${((current + 1) / total) * 100}%`;
     deck.style.transform = `translate3d(${-current * viewportWidth}px, 0, 0)`;
-    refreshAnimations(slides[current]);
+    updateTone();
+    replayAnimations(slides[current]);
   }
 
   function goTo(index) {
@@ -65,7 +78,7 @@
     updateUI();
     window.setTimeout(() => {
       isAnimating = false;
-    }, prefersReducedMotion ? 20 : 720);
+    }, prefersReducedMotion ? 10 : 720);
   }
 
   function next() {
@@ -123,27 +136,49 @@
   function setupHint() {
     window.setTimeout(() => {
       hint.classList.add('hide');
-    }, 3000);
+    }, 3200);
   }
 
   function handleDeckClick(event) {
-    if (event.target.closest('button, a')) return;
+    if (event.target.closest('button, a, .scroll-shell')) return;
     if (window.innerWidth <= 768) return;
     const x = event.clientX;
-    if (x > window.innerWidth * 0.64) next();
-    if (x < window.innerWidth * 0.36) prev();
+    if (x > window.innerWidth * 0.66) next();
+    if (x < window.innerWidth * 0.34) prev();
+  }
+
+  function runPreloader() {
+    if (prefersReducedMotion) {
+      preloader.classList.add('is-hidden');
+      presentation.classList.remove('is-loading');
+      return;
+    }
+
+    preloader.classList.add('is-phase-word');
+
+    window.setTimeout(() => {
+      preloader.classList.remove('is-phase-word');
+      preloader.classList.add('is-phase-spinner');
+    }, 1250);
+
+    window.setTimeout(() => {
+      preloader.classList.add('is-hidden');
+      presentation.classList.remove('is-loading');
+      updateUI();
+    }, 2500);
   }
 
   buildDots();
   updateUI();
   setupHint();
+  runPreloader();
 
   prevZone.addEventListener('click', prev);
   nextZone.addEventListener('click', next);
   fullscreenBtn.addEventListener('click', toggleFullscreen);
+  window.addEventListener('keydown', onKeydown);
   deck.addEventListener('touchstart', onTouchStart, { passive: true });
   deck.addEventListener('touchend', onTouchEnd, { passive: true });
   deck.addEventListener('click', handleDeckClick);
-  window.addEventListener('keydown', onKeydown);
   window.addEventListener('resize', onResize);
 })();

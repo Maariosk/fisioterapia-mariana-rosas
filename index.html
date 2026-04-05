@@ -4,19 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="color-scheme" content="light only" />
-  <meta name="description" content="Presentación interactiva de evolución de identidad para Fisioterapia a tu alcance — Mariana Rosas." />
-  <title>Fisioterapia a tu alcance — Mariana Rosas | Evolución de identidad</title>
+  <meta name="description" content="Presentación interactiva de rebranding para Fisioterapia a tu alcance — Mariana Rosas." />
+  <title>Fisioterapia a tu alcance — Mariana Rosas | Rebranding</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="animations.css" />
 </head>
 <body>
-  <div class="presentation" id="presentation" aria-label="Presentación interactiva de evolución de identidad">
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__wordmark">¿Que onda eh?</div>
+    <div class="preloader__spinner" aria-hidden="true"></div>
+  </div>
+
+  <div class="presentation ui-on-dark is-loading" id="presentation" aria-label="Presentación interactiva de evolución de identidad">
     <div class="grain" aria-hidden="true"></div>
+
+    <div class="brand-badge" aria-label="Powered by Lincar Media Studio">
+      <img src="lincar-logo.png" alt="Lincar Media Studio" loading="eager" decoding="async" />
+      <div class="brand-badge__copy">
+        <span>Powered by</span>
+        <strong>Lincar Media Studio</strong>
+      </div>
+    </div>
 
     <button class="nav-zone prev" id="prevZone" aria-label="Diapositiva anterior"></button>
     <button class="nav-zone next" id="nextZone" aria-label="Diapositiva siguiente"></button>
 
-    <button class="fullscreen-btn ui-glass interactive" id="fullscreenBtn" aria-label="Pantalla completa" title="Pantalla completa">
+    <button class="fullscreen-btn ui-panel interactive" id="fullscreenBtn" aria-label="Pantalla completa" title="Pantalla completa">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <polyline points="8 3 3 3 3 8"></polyline>
         <line x1="3" y1="3" x2="9" y2="9"></line>
@@ -29,53 +42,53 @@
       </svg>
     </button>
 
-    <div class="hint ui-glass" id="hint">Desliza o usa las flechas para navegar</div>
+    <div class="hint ui-panel" id="hint">Desliza o usa las flechas para navegar</div>
 
     <main class="slides" id="slides">
-      <section class="slide theme-dark theme-cover active" aria-hidden="false" data-title="Portada">
+      <section class="slide theme-dark theme-cover active" data-title="Portada" aria-hidden="false">
         <div class="slide-shell cover-shell">
           <div class="cover-orb orb-a" aria-hidden="true"></div>
           <div class="cover-orb orb-b" aria-hidden="true"></div>
           <div class="cover-grid">
             <div class="stack lg-gap z-top">
-              <p class="eyebrow animate" style="--d:120ms">Evolución de identidad</p>
+              <p class="eyebrow animate" style="--d:120ms">Propuesta de rebranding</p>
               <h1 class="title-xl clip-reveal" style="--d:220ms">Fisioterapia a tu alcance</h1>
-              <p class="subtitle-lg animate" style="--d:420ms">Un sistema de marca más claro, más sólido y mejor preparado para crecer en consulta, en digital y en recomendación.</p>
-              <div class="meta-line animate" style="--d:560ms">
+              <p class="subtitle-lg animate" style="--d:380ms">Una evolución visual diseñada para elevar percepción clínica, claridad comercial y consistencia digital sin romper con la historia de la marca.</p>
+              <div class="meta-line animate" style="--d:520ms">
                 <span class="meta-pill interactive">Mariana Rosas</span>
                 <span class="meta-pill interactive">Premium · Clínica · Comercial</span>
               </div>
             </div>
-            <aside class="cover-aside animate interactive" style="--d:720ms">
-              <p class="card-kicker">Dirección del proyecto</p>
-              <p class="card-copy">La migración no busca romper con la historia de la marca. Busca darle forma, orden y una presencia que hoy sí pueda competir visualmente.</p>
+            <aside class="cover-aside interactive animate" style="--d:660ms">
+              <p class="card-kicker">Dirección creativa</p>
+              <p class="card-copy">El objetivo no es “hacerlo más bonito”. Es construir una identidad más clara, más recordable y mejor preparada para consulta, recomendación y redes.</p>
             </aside>
           </div>
         </div>
       </section>
 
-      <section class="slide theme-light theme-soft" aria-hidden="true" data-title="Por qué cambiar">
-        <div class="slide-shell split-hero-shell">
+      <section class="slide theme-light theme-soft" data-title="Por qué cambiar" aria-hidden="true">
+        <div class="slide-shell split-hero-shell scroll-shell">
           <div class="copy-column">
             <p class="eyebrow animate" style="--d:120ms">Diagnóstico</p>
             <h2 class="title-lg clip-reveal" style="--d:220ms">Por qué sí es necesario un cambio de diseño.</h2>
-            <p class="body-copy animate" style="--d:380ms">La identidad actual comunica el servicio, pero todavía no construye una percepción premium ni una diferenciación nítida. En pantallas pequeñas pierde jerarquía, mezcla demasiados recursos visuales y no deja una firma memorable después del primer vistazo.</p>
+            <p class="body-copy animate" style="--d:360ms">La identidad actual comunica servicio, pero todavía no sostiene una percepción premium ni una lectura suficientemente clara en digital. En tamaños pequeños pierde jerarquía, mezcla demasiados recursos y no deja una firma memorable.</p>
             <div class="reason-list">
-              <article class="reason-card interactive animate" style="--d:520ms">
+              <article class="reason-card interactive animate" style="--d:500ms">
                 <h3>Claridad</h3>
-                <p>Hoy conviven símbolo, tipografías y contenedores sin una jerarquía consistente. La nueva propuesta corrige lectura, peso y orden.</p>
+                <p>El sistema actual no jerarquiza bien nombre, símbolo y soporte. El rediseño ordena lectura, aire y peso visual.</p>
               </article>
-              <article class="reason-card interactive animate" style="--d:620ms">
-                <h3>Memoria visual</h3>
-                <p>Una identidad más definida facilita que el paciente recuerde la marca, la recomiende y la relacione con profesionalismo.</p>
+              <article class="reason-card interactive animate" style="--d:600ms">
+                <h3>Recordación</h3>
+                <p>Una identidad más nítida facilita que la marca se recuerde después de consulta o recomendación.</p>
               </article>
-              <article class="reason-card interactive animate" style="--d:720ms">
+              <article class="reason-card interactive animate" style="--d:700ms">
                 <h3>Escalabilidad</h3>
-                <p>Lo que funciona en consulta debe funcionar también en Instagram, WhatsApp, reels, impresos y señalización física.</p>
+                <p>Lo que funciona en un banner o en una story debe funcionar igual de bien en uniforme, anuncio y señalización.</p>
               </article>
             </div>
           </div>
-          <div class="statement-column animate" style="--d:360ms">
+          <div class="statement-column animate" style="--d:320ms">
             <div class="statement-shape interactive">
               <p class="statement-line">Una marca con historia.</p>
               <p class="statement-line emphasis">Una identidad con futuro.</p>
@@ -84,43 +97,43 @@
         </div>
       </section>
 
-      <section class="slide theme-light theme-origin" aria-hidden="true" data-title="Identidad de origen">
-        <div class="slide-shell centered-shell">
+      <section class="slide theme-light theme-origin" data-title="Identidad de origen" aria-hidden="true">
+        <div class="slide-shell centered-shell scroll-shell">
           <p class="eyebrow animate" style="--d:120ms">Identidad de origen</p>
           <div class="origin-stage">
             <div class="media-panel media-panel-wide interactive animate scale-reveal" style="--d:220ms">
               <img src="logoold.png" alt="Logotipo original de Fisioterapia a tu alcance — Mariana Rosas" class="logo-image logo-origin" loading="lazy" decoding="async" />
             </div>
           </div>
-          <div class="justify-card interactive animate" style="--d:520ms">
-            <p>La marca de origen tiene un valor claro: ya existe un reconocimiento y un vínculo cercano con el paciente. Por eso la evolución debe partir del respeto a esa base, no de la negación. El rediseño toma esa cercanía y la traduce a un lenguaje más limpio, más legible y más competitivo.</p>
+          <div class="justify-card interactive animate" style="--d:460ms">
+            <p>La marca de origen ya tiene vínculo emocional y reconocimiento local. Por eso la evolución parte desde el respeto: toma esa cercanía y la traduce a una expresión más legible, más limpia y mejor preparada para crecer.</p>
           </div>
         </div>
       </section>
 
-      <section class="slide theme-dark theme-proposal-a" aria-hidden="true" data-title="Propuesta A">
-        <div class="slide-shell split-shell">
+      <section class="slide theme-dark theme-proposal-a" data-title="Propuesta A" aria-hidden="true">
+        <div class="slide-shell split-shell scroll-shell">
           <div class="panel-block">
             <p class="eyebrow animate" style="--d:120ms">Propuesta A</p>
             <h2 class="title-md clip-reveal" style="--d:220ms">Símbolo clínico con fuerza icónica.</h2>
-            <p class="body-copy light animate" style="--d:380ms">Esta ruta toma el territorio médico y lo vuelve distintivo. La serpiente y la columna construyen un emblema de fácil recordación, con una lectura más especializada y un gesto visual mucho más firme.</p>
+            <p class="body-copy light animate" style="--d:360ms">La serpiente y la columna convierten la marca en un emblema clínico reconocible incluso cuando el nombre no aparece completo. Es la ruta más simbólica y especializada.</p>
             <div class="bullet-grid">
-              <article class="bullet-card dark interactive animate" style="--d:520ms">
+              <article class="bullet-card dark interactive animate" style="--d:500ms">
                 <h3>Qué resuelve</h3>
-                <p>Da un ícono reconocible incluso cuando el nombre no aparece completo.</p>
+                <p>Construye un ícono de fácil recuerdo para avatar, sello, uniforme y piezas de bajo espacio.</p>
               </article>
-              <article class="bullet-card dark interactive animate" style="--d:620ms">
+              <article class="bullet-card dark interactive animate" style="--d:600ms">
                 <h3>Qué comunica</h3>
-                <p>Precisión clínica, tratamiento corporal y una personalidad visual más sólida.</p>
+                <p>Tratamiento corporal, rigor clínico y una firma visual con más autoridad médica.</p>
               </article>
             </div>
           </div>
           <div class="media-column">
-            <div class="comparison-tag animate" style="--d:260ms">Nueva identidad</div>
+            <div class="comparison-tag animate" style="--d:240ms">Nueva identidad</div>
             <div class="media-panel interactive animate scale-reveal" style="--d:360ms">
               <img src="logo1.png" alt="Propuesta A: serpiente y columna en violeta" class="logo-image logo-standard" loading="lazy" decoding="async" />
             </div>
-            <div class="before-mini interactive animate" style="--d:620ms">
+            <div class="before-mini interactive animate" style="--d:600ms">
               <span>Antes</span>
               <img src="logoold.png" alt="Referencia de la identidad anterior" loading="lazy" decoding="async" />
             </div>
@@ -128,25 +141,25 @@
         </div>
       </section>
 
-      <section class="slide theme-light theme-proposal-b" aria-hidden="true" data-title="Propuesta B">
-        <div class="slide-shell editorial-shell">
+      <section class="slide theme-light theme-proposal-b" data-title="Propuesta B" aria-hidden="true">
+        <div class="slide-shell editorial-shell scroll-shell">
           <div class="editorial-copy">
             <p class="eyebrow animate" style="--d:120ms">Propuesta B</p>
             <h2 class="title-lg clip-reveal" style="--d:220ms">La marca se ordena sin perder cercanía.</h2>
-            <p class="body-copy animate" style="--d:380ms">Esta propuesta concentra el valor en la palabra. Reduce ruido, mejora la lectura y vuelve la identidad más elegante y adaptable. Es la ruta más editorial, la más clara para presentaciones, perfiles digitales y piezas comerciales.</p>
+            <p class="body-copy animate" style="--d:360ms">Esta ruta concentra el valor en la palabra. Reduce ruido, mejora la lectura y vuelve la identidad más elegante y adaptable. Es la propuesta más editorial y la más versátil para digital y materiales comerciales.</p>
             <div class="bullet-grid one-column">
-              <article class="bullet-card interactive animate" style="--d:520ms">
+              <article class="bullet-card interactive animate" style="--d:500ms">
                 <h3>Qué resuelve</h3>
-                <p>Hace más fácil la lectura en celular, anuncios, encabezados y materiales impresos.</p>
+                <p>Mejora lectura en celular, anuncios, encabezados, PDFs, piezas impresas y firma digital.</p>
               </article>
-              <article class="bullet-card interactive animate" style="--d:620ms">
+              <article class="bullet-card interactive animate" style="--d:600ms">
                 <h3>Qué comunica</h3>
-                <p>Confianza, orden y una estética contemporánea sin perder humanidad.</p>
+                <p>Orden, cercanía, precisión y una estética más contemporánea sin perder humanidad.</p>
               </article>
             </div>
           </div>
           <div class="editorial-media">
-            <div class="media-panel media-panel-large interactive animate scale-reveal" style="--d:360ms">
+            <div class="media-panel media-panel-large interactive animate scale-reveal" style="--d:340ms">
               <img src="logo2.png" alt="Propuesta B: logotipo tipográfico refinado" class="logo-image logo-standard" loading="lazy" decoding="async" />
             </div>
             <div class="caption-strip animate" style="--d:620ms">Nueva identidad · Ruta tipográfica</div>
@@ -154,147 +167,93 @@
         </div>
       </section>
 
-      <section class="slide theme-dark theme-proposal-c" aria-hidden="true" data-title="Propuesta C">
-        <div class="slide-shell split-shell reverse-gap">
+      <section class="slide theme-dark theme-proposal-c" data-title="Propuesta C" aria-hidden="true">
+        <div class="slide-shell split-shell reverse-gap scroll-shell">
           <div class="panel-block">
             <p class="eyebrow animate" style="--d:120ms">Propuesta C</p>
             <h2 class="title-md clip-reveal" style="--d:220ms">Un emblema de carácter para una marca que quiere dominar visualmente.</h2>
-            <p class="body-copy light animate" style="--d:380ms">La tercera ruta se mueve hacia un sello más expresivo. El caduceo alado con rayo crea una identidad de fuerte impacto, pensada para marcas que quieren imponerse con mayor energía visual y presencia frontal.</p>
+            <p class="body-copy light animate" style="--d:360ms">El caduceo alado con rayo se mueve hacia una presencia más expresiva. Es la ruta más potente para una marca que busca hacerse notar con un gesto frontal y de alto impacto.</p>
             <div class="bullet-grid">
-              <article class="bullet-card dark interactive animate" style="--d:520ms">
+              <article class="bullet-card dark interactive animate" style="--d:500ms">
                 <h3>Qué resuelve</h3>
-                <p>Genera una firma visual de alta recordación en redes, uniformes y piezas promocionales.</p>
+                <p>Genera una firma muy fuerte para campañas, piezas promocionales, uniformes y cabeceras visuales.</p>
               </article>
-              <article class="bullet-card dark interactive animate" style="--d:620ms">
+              <article class="bullet-card dark interactive animate" style="--d:600ms">
                 <h3>Qué comunica</h3>
-                <p>Autoridad, potencia y una personalidad más audaz dentro del sector salud.</p>
+                <p>Energía, determinación y una autoridad visual mucho más protagónica.</p>
               </article>
             </div>
           </div>
-          <div class="media-column">
-            <div class="media-stack">
-              <div class="media-panel interactive animate" style="--d:340ms">
-                <img src="logo3.png" alt="Propuesta C: caduceo alado con rayo" class="logo-image logo-standard" loading="lazy" decoding="async" />
-              </div>
-              <div class="media-panel ghost interactive animate" style="--d:520ms">
-                <img src="logoold.png" alt="Identidad de origen desaturada" class="logo-image logo-origin ghosted" loading="lazy" decoding="async" />
-              </div>
+          <div class="media-column media-column-stack">
+            <div class="ghost-card interactive animate" style="--d:280ms">
+              <span class="comparison-tag">Origen desaturado</span>
+              <img src="logoold.png" alt="Referencia desaturada de la marca original" loading="lazy" decoding="async" />
+            </div>
+            <div class="media-panel interactive animate scale-reveal" style="--d:460ms">
+              <img src="logo3.png" alt="Propuesta C: caduceo alado con rayo" class="logo-image logo-standard" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
       </section>
 
-      <section class="slide theme-light theme-system" aria-hidden="true" data-title="Sistema de logotipos">
-        <div class="slide-shell tall-shell">
-          <div class="shell-head">
+      <section class="slide theme-light theme-system" data-title="Sistema de logotipos" aria-hidden="true">
+        <div class="slide-shell system-shell scroll-shell">
+          <div class="shell-head shell-head-tight">
             <div>
               <p class="eyebrow animate" style="--d:120ms">Sistema de logotipos</p>
-              <h2 class="title-lg clip-reveal" style="--d:220ms">Tres rutas. Un mismo territorio visual.</h2>
+              <h2 class="title-lg clip-reveal" style="--d:220ms">Tres rutas. Un sistema comparable.</h2>
             </div>
-            <p class="body-copy short animate" style="--d:360ms">Aquí se ordenan como sistema: misma proporción de presentación, mismas áreas de aire y un lenguaje visual consistente para evaluar con criterio real.</p>
+            <p class="body-copy short animate" style="--d:360ms">Se ordenan con la misma lógica de evaluación: misma caja visual, misma respiración, mismo criterio. Así la comparación es limpia y profesional.</p>
           </div>
-          <div class="logo-grid refined-grid">
-            <article class="mini-card interactive animate" style="--d:460ms">
-              <p class="variant">A · Principal</p>
-              <div class="logo-frame"><img src="logo1.png" alt="Propuesta A principal" class="logo-image logo-standard" loading="lazy" decoding="async" /></div>
-            </article>
-            <article class="mini-card interactive animate" style="--d:560ms">
-              <p class="variant">A · Monocromática</p>
-              <div class="logo-frame"><img src="logo1.png" alt="Propuesta A monocromática" class="logo-image logo-standard mono" loading="lazy" decoding="async" /></div>
-            </article>
-            <article class="mini-card interactive animate" style="--d:660ms">
-              <p class="variant">B · Principal</p>
-              <div class="logo-frame"><img src="logo2.png" alt="Propuesta B principal" class="logo-image logo-standard" loading="lazy" decoding="async" /></div>
-            </article>
-            <article class="mini-card interactive animate" style="--d:760ms">
-              <p class="variant">B · Monocromática</p>
-              <div class="logo-frame"><img src="logo2.png" alt="Propuesta B monocromática" class="logo-image logo-standard mono" loading="lazy" decoding="async" /></div>
-            </article>
-            <article class="mini-card interactive animate" style="--d:860ms">
-              <p class="variant">C · Principal</p>
-              <div class="logo-frame"><img src="logo3.png" alt="Propuesta C principal" class="logo-image logo-standard" loading="lazy" decoding="async" /></div>
-            </article>
-            <article class="mini-card interactive animate" style="--d:960ms">
-              <p class="variant">C · Monocromática</p>
-              <div class="logo-frame"><img src="logo3.png" alt="Propuesta C monocromática" class="logo-image logo-standard mono" loading="lazy" decoding="async" /></div>
-            </article>
-          </div>
-        </div>
-      </section>
 
-      <section class="slide theme-light theme-color" aria-hidden="true" data-title="Paleta y tipografía">
-        <div class="slide-shell color-shell">
-          <div class="color-copy">
-            <p class="eyebrow animate" style="--d:120ms">Sistema visual</p>
-            <h2 class="title-md clip-reveal" style="--d:220ms">Paleta y tipografía bajo una misma disciplina.</h2>
-            <p class="body-copy animate" style="--d:380ms">Se unificaron escalas, pesos y tonos para que la marca deje de verse fragmentada. El objetivo es que cada pieza — digital o física — se sienta parte de una misma familia visual.</p>
-            <div class="type-sample interactive animate" style="--d:520ms">
-              <span class="type-label">Tipografía</span>
-              <strong>Fisioterapia a tu alcance</strong>
-              <small>Editorial condensada para titulares · Sans limpia para lectura y soporte</small>
-            </div>
-          </div>
-          <div class="palette-grid refined-palette">
-            <article class="swatch-card interactive swatch" style="--d:340ms">
-              <div class="swatch-chip" style="background:#3B0A6E"></div>
-              <div class="swatch-copy"><h3>Violeta profundo</h3><p>#3B0A6E · Autoridad y base</p></div>
-            </article>
-            <article class="swatch-card interactive swatch" style="--d:440ms">
-              <div class="swatch-chip" style="background:#6A0DAD"></div>
-              <div class="swatch-copy"><h3>Morado real</h3><p>#6A0DAD · Energía y énfasis</p></div>
-            </article>
-            <article class="swatch-card interactive swatch" style="--d:540ms">
-              <div class="swatch-chip" style="background:#9B59B6"></div>
-              <div class="swatch-copy"><h3>Morado medio</h3><p>#9B59B6 · Continuidad</p></div>
-            </article>
-            <article class="swatch-card interactive swatch" style="--d:640ms">
-              <div class="swatch-chip" style="background:#C39BD3"></div>
-              <div class="swatch-copy"><h3>Lila suave</h3><p>#C39BD3 · Cercanía</p></div>
-            </article>
-            <article class="swatch-card interactive swatch" style="--d:740ms">
-              <div class="swatch-chip" style="background:#F3EEF9"></div>
-              <div class="swatch-copy"><h3>Lavanda pálido</h3><p>#F3EEF9 · Respiración</p></div>
-            </article>
-            <article class="swatch-card interactive swatch" style="--d:840ms">
-              <div class="swatch-chip" style="background:#D4AF37"></div>
-              <div class="swatch-copy"><h3>Dorado fino</h3><p>#D4AF37 · Jerarquía mínima</p></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide theme-dark theme-social" aria-hidden="true" data-title="Uso en redes sociales">
-        <div class="slide-shell social-shell">
-          <div class="shell-head dark-head">
-            <div>
-              <p class="eyebrow animate" style="--d:120ms">Aplicación digital</p>
-              <h2 class="title-lg clip-reveal" style="--d:220ms">Cómo se traduce este branding en redes sociales.</h2>
-            </div>
-            <p class="body-copy light short animate" style="--d:360ms">La nueva identidad permite una línea visual consistente para reels, carruseles, portadas de video, historias destacadas y anuncios pagados. Ya no depende de improvisación gráfica.</p>
-          </div>
-          <div class="social-grid">
-            <article class="device-card interactive animate" style="--d:460ms">
-              <span class="device-tag">Post 1:1</span>
-              <div class="mockup post">
-                <div class="mockup-header"></div>
-                <div class="mockup-logo"><img src="logo2.png" alt="Uso del logotipo en publicación cuadrada" loading="lazy" decoding="async" /></div>
-                <div class="mockup-copy">Rehabilitación deportiva con una firma visual clara y reconocible.</div>
+          <div class="logo-system-grid">
+            <article class="logo-route interactive animate" style="--d:460ms">
+              <div class="logo-route__head">
+                <span class="route-code">Ruta A</span>
+                <h3>Símbolo clínico</h3>
+              </div>
+              <div class="logo-route__body">
+                <div class="logo-card-eq">
+                  <span class="variant">Principal</span>
+                  <div class="logo-frame-eq"><img src="logo1.png" alt="Ruta A principal" class="logo-image logo-equal" loading="lazy" decoding="async" /></div>
+                </div>
+                <div class="logo-card-eq">
+                  <span class="variant">Monocromática</span>
+                  <div class="logo-frame-eq"><img src="logo1.png" alt="Ruta A monocromática" class="logo-image logo-equal mono" loading="lazy" decoding="async" /></div>
+                </div>
               </div>
             </article>
-            <article class="device-card interactive animate" style="--d:560ms">
-              <span class="device-tag">Story / Reel 9:16</span>
-              <div class="mockup story">
-                <div class="mockup-logo floating"><img src="logo1.png" alt="Uso del símbolo en portada vertical" loading="lazy" decoding="async" /></div>
-                <div class="mockup-band"></div>
-                <div class="mockup-copy">Portadas limpias, legibles y con mayor capacidad de recordación.</div>
+
+            <article class="logo-route interactive animate" style="--d:580ms">
+              <div class="logo-route__head">
+                <span class="route-code">Ruta B</span>
+                <h3>Editorial tipográfica</h3>
+              </div>
+              <div class="logo-route__body">
+                <div class="logo-card-eq logo-card-eq--wide">
+                  <span class="variant">Principal</span>
+                  <div class="logo-frame-eq"><img src="logo2.png" alt="Ruta B principal" class="logo-image logo-equal" loading="lazy" decoding="async" /></div>
+                </div>
+                <div class="logo-card-eq logo-card-eq--wide">
+                  <span class="variant">Monocromática</span>
+                  <div class="logo-frame-eq"><img src="logo2.png" alt="Ruta B monocromática" class="logo-image logo-equal mono" loading="lazy" decoding="async" /></div>
+                </div>
               </div>
             </article>
-            <article class="device-card interactive animate" style="--d:660ms">
-              <span class="device-tag">Perfil / Destacadas</span>
-              <div class="mockup profile">
-                <div class="avatar-ring"><img src="logo3.png" alt="Uso del emblema en avatar y destacadas" loading="lazy" decoding="async" /></div>
-                <div class="profile-lines">
-                  <span></span><span></span><span></span>
+
+            <article class="logo-route interactive animate" style="--d:700ms">
+              <div class="logo-route__head">
+                <span class="route-code">Ruta C</span>
+                <h3>Emblema dominante</h3>
+              </div>
+              <div class="logo-route__body">
+                <div class="logo-card-eq">
+                  <span class="variant">Principal</span>
+                  <div class="logo-frame-eq"><img src="logo3.png" alt="Ruta C principal" class="logo-image logo-equal" loading="lazy" decoding="async" /></div>
+                </div>
+                <div class="logo-card-eq">
+                  <span class="variant">Monocromática</span>
+                  <div class="logo-frame-eq"><img src="logo3.png" alt="Ruta C monocromática" class="logo-image logo-equal mono" loading="lazy" decoding="async" /></div>
                 </div>
               </div>
             </article>
@@ -302,35 +261,148 @@
         </div>
       </section>
 
-      <section class="slide theme-light theme-impact" aria-hidden="true" data-title="Alcance e impacto">
-        <div class="slide-shell impact-shell">
-          <div class="impact-copy">
-            <p class="eyebrow animate" style="--d:120ms">Alcance del rediseño</p>
-            <h2 class="title-lg clip-reveal" style="--d:220ms">Qué alcance real puede tener la nueva identidad.</h2>
-            <p class="body-copy animate" style="--d:380ms">Un mejor sistema visual no promete milagros, pero sí mejora tres frentes concretos: percepción profesional, recordación de marca y consistencia en todos los puntos de contacto. Eso se traduce en una marca más fácil de recomendar, más fácil de reconocer y más preparada para crecer.</p>
+      <section class="slide theme-light theme-color" data-title="Paleta y tipografía" aria-hidden="true">
+        <div class="slide-shell color-shell scroll-shell">
+          <div class="shell-head shell-head-tight">
+            <div>
+              <p class="eyebrow animate" style="--d:120ms">Sistema visual</p>
+              <h2 class="title-lg clip-reveal" style="--d:220ms">Paleta y tipografía bajo una misma disciplina.</h2>
+            </div>
+            <p class="body-copy short animate" style="--d:360ms">Se unifican escalas, pesos y tonos para que la marca deje de sentirse fragmentada. Todo se ordena bajo un mismo criterio editorial.</p>
           </div>
-          <div class="impact-grid">
-            <article class="impact-card interactive animate" style="--d:520ms">
-              <h3>Más confianza visual</h3>
-              <p>Cuando la identidad se ve ordenada, el servicio se percibe más serio, más claro y más profesional.</p>
+
+          <div class="color-layout">
+            <div class="color-copy">
+              <article class="type-spec interactive animate" style="--d:440ms">
+                <span class="type-label">Tipografía principal</span>
+                <strong class="type-headline">Fisioterapia a tu alcance</strong>
+                <small>Display condensada para titulares · sans limpia para lectura, soportes y aplicaciones digitales.</small>
+              </article>
+
+              <div class="type-scale-card interactive animate" style="--d:560ms">
+                <div class="type-scale-row">
+                  <span class="type-scale-tag">Titular</span>
+                  <p class="type-scale-sample type-scale-sample--xl">Claridad clínica</p>
+                </div>
+                <div class="type-scale-row">
+                  <span class="type-scale-tag">Subtítulo</span>
+                  <p class="type-scale-sample type-scale-sample--lg">Jerarquía consistente</p>
+                </div>
+                <div class="type-scale-row">
+                  <span class="type-scale-tag">Cuerpo</span>
+                  <p class="type-scale-sample type-scale-sample--md">Un sistema tipográfico pensado para consulta, digital y piezas comerciales.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="palette-grid refined-palette">
+              <article class="swatch-card interactive swatch" style="--d:360ms">
+                <div class="swatch-chip" style="background:#3B0A6E"></div>
+                <div class="swatch-copy"><h3>Violeta profundo</h3><p>#3B0A6E · Autoridad y base</p></div>
+              </article>
+              <article class="swatch-card interactive swatch" style="--d:460ms">
+                <div class="swatch-chip" style="background:#6A0DAD"></div>
+                <div class="swatch-copy"><h3>Morado real</h3><p>#6A0DAD · Energía y énfasis</p></div>
+              </article>
+              <article class="swatch-card interactive swatch" style="--d:560ms">
+                <div class="swatch-chip" style="background:#9B59B6"></div>
+                <div class="swatch-copy"><h3>Morado medio</h3><p>#9B59B6 · Continuidad</p></div>
+              </article>
+              <article class="swatch-card interactive swatch" style="--d:660ms">
+                <div class="swatch-chip" style="background:#C39BD3"></div>
+                <div class="swatch-copy"><h3>Lila suave</h3><p>#C39BD3 · Cercanía</p></div>
+              </article>
+              <article class="swatch-card interactive swatch" style="--d:760ms">
+                <div class="swatch-chip swatch-chip--light" style="background:#F3EEF9"></div>
+                <div class="swatch-copy"><h3>Lavanda pálido</h3><p>#F3EEF9 · Respiración</p></div>
+              </article>
+              <article class="swatch-card interactive swatch" style="--d:860ms">
+                <div class="swatch-chip" style="background:#D4AF37"></div>
+                <div class="swatch-copy"><h3>Dorado fino</h3><p>#D4AF37 · Jerarquía mínima</p></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide theme-dark theme-social" data-title="Uso en redes sociales" aria-hidden="true">
+        <div class="slide-shell social-shell scroll-shell">
+          <div class="shell-head shell-head-tight dark-head">
+            <div>
+              <p class="eyebrow animate" style="--d:120ms">Aplicación digital</p>
+              <h2 class="title-lg clip-reveal" style="--d:220ms">Cómo se traduce este branding en redes sociales.</h2>
+            </div>
+            <p class="body-copy light short animate" style="--d:360ms">La nueva identidad sostiene una línea visual consistente para posts, reels, historias, portadas y anuncios. Ya no depende de improvisación gráfica.</p>
+          </div>
+
+          <div class="social-grid refined-social-grid">
+            <article class="device-card interactive animate" style="--d:460ms">
+              <span class="device-tag">Post 1:1</span>
+              <div class="mockup mockup-square">
+                <div class="mockup__chrome"></div>
+                <div class="mockup__inner">
+                  <div class="mockup__brand-band">
+                    <img src="logo2.png" alt="Uso del logotipo en publicación cuadrada" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="mockup__copy">Rehabilitación deportiva con una firma visual limpia, reconocible y consistente.</div>
+                </div>
+              </div>
             </article>
-            <article class="impact-card interactive animate" style="--d:620ms">
-              <h3>Mayor recordación</h3>
-              <p>Una firma más sólida ayuda a que el nombre y el símbolo permanezcan en la mente del paciente.</p>
+
+            <article class="device-card interactive animate" style="--d:560ms">
+              <span class="device-tag">Story / Reel 9:16</span>
+              <div class="mockup mockup-vertical">
+                <div class="mockup__gradient"></div>
+                <div class="mockup__floating-brand">
+                  <img src="logo1.png" alt="Uso del símbolo en portada vertical" loading="lazy" decoding="async" />
+                </div>
+                <div class="mockup__copy">Portadas más limpias, más legibles y con mayor capacidad de recordación visual.</div>
+              </div>
             </article>
-            <article class="impact-card interactive animate" style="--d:720ms">
-              <h3>Mejor desempeño digital</h3>
-              <p>Piezas más limpias y consistentes facilitan anuncios, publicaciones, historias y contenidos con mejor presencia.</p>
-            </article>
-            <article class="impact-card interactive animate" style="--d:820ms">
-              <h3>Escala comercial</h3>
-              <p>La marca queda lista para crecer a uniformes, señalización, impresos, convenios y campañas futuras.</p>
+
+            <article class="device-card interactive animate" style="--d:660ms">
+              <span class="device-tag">Perfil / Destacadas</span>
+              <div class="mockup mockup-profile">
+                <div class="avatar-ring"><img src="logo3.png" alt="Uso del emblema en avatar y destacadas" loading="lazy" decoding="async" /></div>
+                <div class="profile-grid">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <div class="mockup__copy">Avatar, highlights y plantillas bajo una misma lógica visual.</div>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="slide theme-dark theme-close" aria-hidden="true" data-title="Cierre">
+      <section class="slide theme-light theme-impact" data-title="Alcance e impacto" aria-hidden="true">
+        <div class="slide-shell impact-shell scroll-shell">
+          <div class="impact-copy">
+            <p class="eyebrow animate" style="--d:120ms">Alcance del rediseño</p>
+            <h2 class="title-lg clip-reveal" style="--d:220ms">Qué alcance real puede tener la nueva identidad.</h2>
+            <p class="body-copy animate" style="--d:360ms">Un mejor sistema visual no promete milagros, pero sí mejora percepción profesional, recordación y consistencia en todos los puntos de contacto. Eso vuelve a la marca más fácil de reconocer, recomendar y sostener en el tiempo.</p>
+          </div>
+          <div class="impact-grid">
+            <article class="impact-card interactive animate" style="--d:500ms">
+              <h3>Más confianza visual</h3>
+              <p>Cuando la identidad se ve ordenada, el servicio también se percibe más serio y mejor resuelto.</p>
+            </article>
+            <article class="impact-card interactive animate" style="--d:600ms">
+              <h3>Mayor recordación</h3>
+              <p>Un sistema más firme ayuda a que nombre y símbolo permanezcan con más fuerza en la mente del paciente.</p>
+            </article>
+            <article class="impact-card interactive animate" style="--d:700ms">
+              <h3>Mejor desempeño digital</h3>
+              <p>Piezas más claras facilitan anuncios, publicaciones, historias y mensajes comerciales con mejor presencia.</p>
+            </article>
+            <article class="impact-card interactive animate" style="--d:800ms">
+              <h3>Escala comercial</h3>
+              <p>La marca queda lista para uniformes, señalización, convenios, kits impresos y campañas futuras.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide theme-dark theme-close" data-title="Cierre" aria-hidden="true">
         <div class="slide-shell close-shell">
           <p class="eyebrow animate" style="--d:120ms">Cierre</p>
           <h2 class="title-xl clip-reveal" style="--d:220ms">Una nueva identidad. El mismo propósito.</h2>
@@ -341,16 +413,17 @@
       </section>
     </main>
 
-    <div class="ui-bar" aria-hidden="false">
-      <div class="progress-wrap ui-glass">
-        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-        <div class="dots" id="dots"></div>
+    <div class="ui-hud ui-panel" aria-hidden="false">
+      <div class="ui-hud__top">
+        <span class="ui-hud__label" id="currentTitle">Portada</span>
+        <div class="counter-wrap">
+          <span id="counterCurrent">01</span>
+          <span class="counter-separator">/</span>
+          <span id="counterTotal">11</span>
+        </div>
       </div>
-      <div class="counter-wrap ui-glass">
-        <span id="counterCurrent">01</span>
-        <span class="counter-separator">/</span>
-        <span id="counterTotal">11</span>
-      </div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="dots" id="dots"></div>
     </div>
   </div>
 
