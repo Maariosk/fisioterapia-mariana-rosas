@@ -159,13 +159,13 @@
     window.setTimeout(() => {
       preloader.classList.remove('is-phase-word');
       preloader.classList.add('is-phase-spinner');
-    }, 1250);
+    }, 1900);
 
     window.setTimeout(() => {
       preloader.classList.add('is-hidden');
       presentation.classList.remove('is-loading');
       updateUI();
-    }, 2500);
+    }, 3550);
   }
 
   buildDots();

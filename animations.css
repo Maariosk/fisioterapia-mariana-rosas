@@ -44,7 +44,7 @@
 }
 .grain{animation:grainShift 12s steps(10) infinite;}
 .preloader.is-phase-word .preloader__wordmark{animation:preWordIn 760ms cubic-bezier(.22,1,.36,1) forwards;}
-.preloader.is-phase-spinner .preloader__spinner{animation:spin .95s linear infinite;}
+.preloader.is-phase-spinner .preloader__spinner{animation:spin 1.05s linear infinite;}
 
 @keyframes riseFade{
   from{opacity:0;transform:translate3d(0,1.1rem,0);}
@@ -74,7 +74,8 @@
   100%{transform:translate3d(0,0,0);}
 }
 @keyframes preWordIn{
-  0%{opacity:0;transform:translate3d(0,1rem,0) scale(.98);filter:blur(.4rem);}
+  0%{opacity:0;transform:translate3d(0,1.2rem,0) scale(.92);filter:blur(.65rem);}
+  60%{opacity:1;transform:translate3d(0,0,0) scale(1.03);filter:blur(0);}
   100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0);}
 }
 @keyframes spin{
