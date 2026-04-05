@@ -12,7 +12,7 @@
   --text-dark-primary:#FFFFFF;
   --text-dark-secondary:rgba(255,255,255,.78);
 
-  --panel-light:rgba(255,255,255,.88);
+  --panel-light:rgb(255, 255, 255);
   --panel-dark:rgba(30, 16, 45, .56);
   --panel-border-light:1px solid rgba(59,10,110,.08);
   --panel-border-dark:1px solid rgba(255,255,255,.16);
