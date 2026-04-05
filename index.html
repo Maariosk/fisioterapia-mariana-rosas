@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="color-scheme" content="light only" />
+  <title>Fisioterapia a tu alcance — Mariana Rosas | Evolución de Identidad</title>
+  <style>
+    :root{
+      --violet-deep:#3B0A6E;
+      --violet-royal:#6A0DAD;
+      --violet-mid:#9B59B6;
+      --lilac-soft:#C39BD3;
+      --lavender-pale:#F3EEF9;
+      --white:#FFFFFF;
+      --gold-accent:#D4AF37;
+      --ink:#1E102D;
+      --muted:#6F5C87;
+      --shadow:0 1.2rem 3rem rgba(40, 8, 69, 0.16);
+      --radius:clamp(1rem, 2vw, 2rem);
+      --pad-x:clamp(1.2rem, 4vw, 5rem);
+      --pad-y:clamp(1.2rem, 3vw, 3.5rem);
+      --display-font:"Avenir Next Condensed","Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --body-font:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+      --transition:720ms cubic-bezier(.22,1,.36,1);
+      --slide-count:10;
+    }
+
+    *{box-sizing:border-box;}
+    html,body{margin:0; width:100%; min-height:100%; overflow:hidden; background:var(--violet-deep);}
+    body{
+      font-family:var(--body-font);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    img{
+      display:block;
+      max-width:100%;
+      height:auto;
+      user-select:none;
+      -webkit-user-drag:none;
+    }
+    button{font:inherit;}
+    .presentation{
+      position:relative;
+      width:100vw;
+      width:100svw;
+      height:100vh;
+      height:100dvh;
+      overflow:hidden;
+      background:var(--violet-deep);
+      isolation:isolate;
+      touch-action:pan-y;
+    }
+    .grain{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.085;
+      mix-blend-mode:soft-light;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.32) 0 .08rem, transparent .1rem),
+        radial-gradient(circle at 80% 35%, rgba(255,255,255,.22) 0 .05rem, transparent .09rem),
+        radial-gradient(circle at 45% 82%, rgba(255,255,255,.2) 0 .05rem, transparent .08rem),
+        linear-gradient(115deg, transparent 0 48%, rgba(255,255,255,.06) 50%, transparent 52%);
+      background-size: 17rem 17rem, 23rem 23rem, 19rem 19rem, 100% 100%;
+      animation:grainShift 12s steps(10) infinite;
+      z-index:4;
+    }
+    @keyframes grainShift{
+      0%{transform:translate3d(0,0,0);}
+      25%{transform:translate3d(-0.4rem,0.3rem,0);}
+      50%{transform:translate3d(0.35rem,-0.35rem,0);}
+      75%{transform:translate3d(-0.25rem,0.2rem,0);}
+      100%{transform:translate3d(0,0,0);}
+    }
+
+    .slides{
+      position:relative;
+      display:flex;
+      width:calc(var(--slide-count) * 100vw);
+      width:calc(var(--slide-count) * 100svw);
+      height:100%;
+      transition:transform var(--transition);
+      will-change:transform;
+      z-index:1;
+    }
+    .slide{
+      position:relative;
+      width:100vw;
+      width:100svw;
+      height:100vh;
+      height:100dvh;
+      flex:0 0 100vw;
+      flex:0 0 100svw;
+      overflow:hidden;
+      padding:var(--pad-y) var(--pad-x);
+      display:grid;
+      align-items:stretch;
+      isolation:isolate;
+    }
+    .slide::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+    }
+    .slide::after{
+      content:"";
+      position:absolute;
+      inset:auto auto 0 0;
+      width:40vw;
+      height:40vw;
+      max-width:34rem;
+      max-height:34rem;
+      filter:blur(4rem);
+      opacity:.14;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    .theme-dark{
+      color:var(--white);
+    }
+    .theme-dark .muted,
+    .theme-dark .eyebrow,
+    .theme-dark .body-note{color:rgba(255,255,255,.74);}
+    .theme-light{
+      color:var(--ink);
+      background:var(--white);
+    }
+    .theme-light .muted,
+    .theme-light .body-note{color:var(--muted);}
+    .eyebrow{
+      font-size:clamp(.72rem, .65rem + .35vw, 1rem);
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      margin:0;
+      opacity:.9;
+    }
+    .slide-title{
+      margin:0;
+      font-family:var(--display-font);
+      font-weight:800;
+      line-height:.92;
+      letter-spacing:-.03em;
+      text-wrap:balance;
+    }
+    .slide-subtitle{
+      margin:0;
+      font-size:clamp(1rem, .9rem + .8vw, 1.65rem);
+      line-height:1.2;
+      text-wrap:balance;
+    }
+    .slide-name{
+      margin:0;
+      font-size:clamp(1rem, .9rem + .65vw, 1.45rem);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .body-note{
+      margin:0;
+      font-size:clamp(.92rem, .86rem + .38vw, 1.08rem);
+      line-height:1.45;
+      max-width:48ch;
+    }
+
+    .animate{
+      opacity:0;
+      transform:translate3d(0, 1.8rem, 0);
+      will-change:transform, opacity;
+    }
+    .slide.active .animate{
+      animation:riseFade var(--dur, 760ms) cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--d, 0ms);
+    }
+    .clip-reveal{
+      clip-path:inset(0 100% 0 0);
+    }
+    .slide.active .clip-reveal{
+      animation:clipReveal calc(var(--dur, 760ms) + 120ms) cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--d, 0ms);
+      opacity:1;
+      transform:none;
+    }
+    .scale-reveal{
+      transform:scale(.82);
+    }
+    .slide.active .scale-reveal{
+      animation:scaleReveal var(--dur, 760ms) cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--d, 0ms);
+    }
+    .draw-line path,
+    .draw-line line,
+    .draw-line polyline{
+      stroke-dasharray:1200;
+      stroke-dashoffset:1200;
+      opacity:0;
+    }
+    .slide.active .draw-line path,
+    .slide.active .draw-line line,
+    .slide.active .draw-line polyline{
+      animation:drawPath 1100ms cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--d, 0ms);
+    }
+    .swatch{
+      transform:scaleX(.1);
+      transform-origin:left center;
+      opacity:0;
+    }
+    .slide.active .swatch{
+      animation:swatchGrow 720ms cubic-bezier(.22,1,.36,1) forwards;
+      animation-delay:var(--d, 0ms);
+    }
+    @keyframes riseFade{
+      from{opacity:0; transform:translate3d(0, 1.8rem, 0);}
+      to{opacity:1; transform:translate3d(0,0,0);}
+    }
+    @keyframes clipReveal{
+      from{clip-path:inset(0 100% 0 0); opacity:1;}
+      to{clip-path:inset(0 0 0 0); opacity:1;}
+    }
+    @keyframes scaleReveal{
+      from{opacity:0; transform:scale(.82);}
+      to{opacity:1; transform:scale(1);}
+    }
+    @keyframes drawPath{
+      from{stroke-dashoffset:1200; opacity:0;}
+      to{stroke-dashoffset:0; opacity:1;}
+    }
+    @keyframes swatchGrow{
+      from{opacity:0; transform:scaleX(.12);}
+      to{opacity:1; transform:scaleX(1);}
+    }
+    @keyframes shimmer{
+      0%{transform:translateX(-15%) rotate(-8deg);}
+      100%{transform:translateX(15%) rotate(-8deg);}
+    }
+
+    .top-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      position:relative;
+      z-index:3;
+    }
+    .counter{
+      font-size:clamp(.8rem,.75rem + .25vw,1rem);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      opacity:.78;
+    }
+
+    .nav-zone{
+      position:fixed;
+      top:0;
+      bottom:0;
+      width:max(44px, 4.5vw);
+      z-index:20;
+      cursor:pointer;
+      border:0;
+      background:transparent;
+      appearance:none;
+    }
+    .nav-zone.prev{left:0;}
+    .nav-zone.next{right:0;}
+    .nav-zone:focus-visible{
+      outline:2px solid rgba(212,175,55,.8);
+      outline-offset:-2px;
+    }
+
+    .ui{
+      position:fixed;
+      inset:auto 0 clamp(.9rem, 2vw, 1.35rem) 0;
+      z-index:30;
+      pointer-events:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:1rem;
+      padding-inline:clamp(1rem, 3vw, 2rem);
+    }
+    .progress{
+      position:relative;
+      display:flex;
+      align-items:center;
+      gap:clamp(.45rem, .4rem + .2vw, .75rem);
+      padding:clamp(.45rem, .4rem + .2vw, .7rem) clamp(.7rem, .7rem + .4vw, 1rem);
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      pointer-events:auto;
+      box-shadow:0 .7rem 2rem rgba(0,0,0,.14);
+    }
+    .progress-line{
+      position:absolute;
+      left:.85rem;
+      right:.85rem;
+      top:50%;
+      height:1px;
+      background:rgba(255,255,255,.18);
+      transform:translateY(-50%);
+      z-index:0;
+    }
+    .progress-line-fill{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:0%;
+      background:linear-gradient(90deg, var(--gold-accent), rgba(212,175,55,.15));
+      transition:width var(--transition);
+    }
+    .dots{
+      position:relative;
+      display:flex;
+      gap:clamp(.42rem, .36rem + .18vw, .72rem);
+      z-index:1;
+    }
+    .dot{
+      width:clamp(.58rem, .52rem + .16vw, .78rem);
+      height:clamp(.58rem, .52rem + .16vw, .78rem);
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.22);
+      padding:0;
+      cursor:pointer;
+      pointer-events:auto;
+      transition:transform 320ms ease, background 320ms ease, border-color 320ms ease;
+    }
+    .dot.active{
+      background:var(--gold-accent);
+      border-color:var(--gold-accent);
+      transform:scale(1.2);
+    }
+    .dot:focus-visible{
+      outline:2px solid var(--white);
+      outline-offset:2px;
+    }
+    .fullscreen-btn{
+      position:fixed;
+      top:clamp(.85rem, 2vw, 1.4rem);
+      right:clamp(.85rem, 2vw, 1.4rem);
+      z-index:32;
+      width:max(44px, 3rem);
+      height:max(44px, 3rem);
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.12);
+      color:var(--white);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      box-shadow:0 .7rem 2rem rgba(0,0,0,.16);
+    }
+    .fullscreen-btn svg{width:1.1rem;height:1.1rem;}
+
+    .hint{
+      position:fixed;
+      left:50%;
+      top:clamp(1.1rem, 3vw, 1.6rem);
+      transform:translateX(-50%);
+      z-index:31;
+      padding:clamp(.6rem,.55rem + .2vw,.8rem) clamp(1rem,.95rem + .4vw,1.25rem);
+      border-radius:999px;
+      background:rgba(15, 7, 27, .72);
+      color:var(--white);
+      font-size:clamp(.82rem, .78rem + .2vw, .98rem);
+      letter-spacing:.03em;
+      box-shadow:0 .9rem 2rem rgba(0,0,0,.18);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      transition:opacity 520ms ease, transform 520ms ease;
+      pointer-events:none;
+    }
+    .hint.hide{
+      opacity:0;
+      transform:translateX(-50%) translateY(-.8rem);
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.55rem;
+      min-height:44px;
+      padding:.72rem 1rem;
+      border-radius:999px;
+      font-size:clamp(.8rem,.76rem + .2vw,.95rem);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      width:max-content;
+      max-width:100%;
+    }
+    .theme-light .badge{
+      background:rgba(155,89,182,.08);
+      border-color:rgba(106,13,173,.14);
+      color:var(--violet-deep);
+    }
+    .line-accent{
+      display:block;
+      width:min(13rem, 28vw);
+      height:1px;
+      background:linear-gradient(90deg, var(--gold-accent), transparent);
+    }
+
+    .logo-card{
+      position:relative;
+      background:rgba(255,255,255,.98);
+      border-radius:calc(var(--radius) * 1.05);
+      box-shadow:var(--shadow);
+      padding:clamp(1rem, 2.5vw, 1.75rem);
+      min-height:0;
+    }
+    .logo-card.dark{
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(243,238,249,.96));
+    }
+    .logo-card img{
+      width:100%;
+      max-width:100%;
+      min-width:120px;
+      object-fit:contain;
+      margin-inline:auto;
+      filter:drop-shadow(0 1rem 1.2rem rgba(59,10,110,.08));
+    }
+    .logo-tag{
+      margin:0 0 .8rem;
+      font-size:clamp(.72rem, .7rem + .22vw, .92rem);
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--violet-mid);
+    }
+    .logo-note{
+      margin:.85rem 0 0;
+      font-size:clamp(.88rem, .84rem + .18vw, .98rem);
+      line-height:1.35;
+      color:var(--muted);
+    }
+
+    .s1{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(195,155,211,.23), transparent 24%),
+        radial-gradient(circle at 84% 22%, rgba(106,13,173,.32), transparent 20%),
+        radial-gradient(circle at 70% 74%, rgba(195,155,211,.12), transparent 18%),
+        linear-gradient(135deg, #29054f 0%, #3B0A6E 35%, #5C0EA1 100%);
+    }
+    .s1::after{
+      background:radial-gradient(circle, rgba(212,175,55,.36), transparent 55%);
+      left:auto; right:-8vw; bottom:-14vw;
+    }
+    .s1 .cover-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+      align-items:end;
+      height:100%;
+      gap:clamp(1rem,3vw,3.5rem);
+    }
+    .s1 .content{
+      align-self:center;
+      max-width:min(65rem, 100%);
+      position:relative;
+      z-index:2;
+    }
+    .s1 .orb{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(.1rem);
+      opacity:.9;
+    }
+    .s1 .orb.one{
+      width:clamp(9rem,18vw,18rem);
+      aspect-ratio:1;
+      right:12vw;
+      top:12vh;
+      background:linear-gradient(180deg, rgba(195,155,211,.08), rgba(195,155,211,.02));
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .s1 .orb.two{
+      width:clamp(16rem,24vw,22rem);
+      aspect-ratio:1;
+      right:-7vw;
+      bottom:-8vw;
+      background:radial-gradient(circle at 35% 35%, rgba(255,255,255,.22), rgba(255,255,255,.02) 60%, transparent 65%);
+      opacity:.3;
+    }
+    .s1 .arc{
+      position:absolute;
+      top:-12vh;
+      right:22vw;
+      width:clamp(10rem,18vw,18rem);
+      aspect-ratio:1;
+      border:1px solid rgba(255,255,255,.18);
+      border-left-color:transparent;
+      border-bottom-color:transparent;
+      border-radius:50%;
+      transform:rotate(18deg);
+    }
+    .s1 .slide-title{
+      font-size:clamp(3rem, 8vw, 8.8rem);
+      max-width:10ch;
+      color:var(--white);
+    }
+    .s1 .slide-subtitle{
+      margin-top:clamp(1rem, 2vw, 1.35rem);
+      color:rgba(255,255,255,.76);
+      max-width:28ch;
+    }
+    .s1 .slide-name{
+      margin-top:clamp(1rem, 1.8vw, 1.55rem);
+      color:var(--gold-accent);
+      font-weight:600;
+    }
+    .s1 .right-note{
+      align-self:end;
+      justify-self:end;
+      max-width:22rem;
+      display:grid;
+      gap:1.1rem;
+      padding-bottom:clamp(1rem,2vw,2rem);
+      color:rgba(255,255,255,.74);
+    }
+
+    .s2{
+      background:
+        radial-gradient(circle at 82% 24%, rgba(155,89,182,.18), transparent 16%),
+        radial-gradient(circle at 91% 88%, rgba(106,13,173,.08), transparent 18%),
+        linear-gradient(180deg, #F8F4FC 0%, #F3EEF9 100%);
+    }
+    .s2::after{
+      background:radial-gradient(circle, rgba(106,13,173,.18), transparent 58%);
+      left:-8vw; bottom:-18vw;
+    }
+    .s2 .layout{
+      display:grid;
+      grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+      gap:clamp(1rem,4vw,4rem);
+      align-items:center;
+      height:100%;
+    }
+    .word-stream{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.24em;
+      max-width:11ch;
+      font-family:var(--display-font);
+      font-weight:800;
+      font-size:clamp(2.35rem, 6vw, 6.25rem);
+      line-height:.94;
+      letter-spacing:-.045em;
+      color:var(--violet-deep);
+    }
+    .word-stream span{
+      opacity:0;
+      transform:translateY(1rem);
+    }
+    .slide.active .word-stream span{
+      animation:riseFade 620ms cubic-bezier(.22,1,.36,1) forwards;
+    }
+    .slide.active .word-stream span:nth-child(1){animation-delay:90ms;}
+    .slide.active .word-stream span:nth-child(2){animation-delay:180ms;}
+    .slide.active .word-stream span:nth-child(3){animation-delay:270ms;}
+    .slide.active .word-stream span:nth-child(4){animation-delay:360ms;}
+    .slide.active .word-stream span:nth-child(5){animation-delay:450ms;}
+    .slide.active .word-stream span:nth-child(6){animation-delay:540ms;}
+    .slide.active .word-stream span:nth-child(7){animation-delay:630ms;}
+    .slide.active .word-stream span:nth-child(8){animation-delay:720ms;}
+    .s2 .micro-notes{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.85rem;
+      margin-top:clamp(1.2rem,2vw,1.8rem);
+    }
+    .micro-chip{
+      min-height:44px;
+      padding:.9rem 1rem;
+      border-radius:999px;
+      background:rgba(106,13,173,.08);
+      color:var(--violet-deep);
+      font-size:clamp(.84rem,.8rem + .18vw,.95rem);
+      line-height:1.15;
+      border:1px solid rgba(106,13,173,.11);
+    }
+    .shape-stage{
+      position:relative;
+      min-height:min(58vh, 34rem);
+      display:grid;
+      place-items:center;
+    }
+    .shape-stage svg{
+      width:min(100%, 32rem);
+      height:auto;
+      filter:drop-shadow(0 1.5rem 2rem rgba(106,13,173,.08));
+    }
+
+    .s3{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(195,155,211,.18), transparent 12%),
+        radial-gradient(circle at 82% 84%, rgba(106,13,173,.08), transparent 12%),
+        linear-gradient(180deg, #FFFFFF 0%, #FCFAFE 100%);
+    }
+    .s3 .layout{
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      height:100%;
+      align-items:center;
+    }
+    .origin-wrap{
+      display:grid;
+      justify-items:center;
+      gap:clamp(1rem,2vw,1.5rem);
+      align-self:center;
+    }
+    .origin-card{
+      width:min(84vw, 58rem);
+      padding:clamp(1.2rem, 2vw, 1.5rem);
+      border-radius:calc(var(--radius) * 1.1);
+      background:linear-gradient(180deg, #fff, #faf8fc);
+      box-shadow:0 1.5rem 3rem rgba(54, 10, 97, .08);
+    }
+    .origin-card img{
+      width:min(100%, 46rem);
+      margin-inline:auto;
+      min-width:120px;
+    }
+    .origin-line{
+      width:min(14rem, 36vw);
+      height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+    }
+
+    .s4{
+      background:
+        radial-gradient(circle at 18% 18%, rgba(155,89,182,.16), transparent 18%),
+        radial-gradient(circle at 78% 80%, rgba(212,175,55,.12), transparent 16%),
+        linear-gradient(135deg, #1d0437 0%, #30075a 42%, #47107f 100%);
+    }
+    .s4 .layout{
+      display:grid;
+      grid-template-columns:minmax(0,.88fr) auto minmax(0,1.05fr);
+      gap:clamp(.9rem, 3vw, 2.5rem);
+      align-items:center;
+      height:100%;
+    }
+    .transition-arrow{
+      width:clamp(4rem, 10vw, 8rem);
+      justify-self:center;
+      align-self:center;
+      opacity:.9;
+    }
+    .transition-arrow svg{
+      width:100%;
+      height:auto;
+      overflow:visible;
+    }
+
+    .s5{
+      background:
+        radial-gradient(circle at 85% 18%, rgba(155,89,182,.22), transparent 13%),
+        radial-gradient(circle at 8% 92%, rgba(195,155,211,.26), transparent 14%),
+        linear-gradient(180deg, #FBF9FE 0%, #F3EEF9 100%);
+    }
+    .s5 .layout{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(0,.72fr) minmax(0,1.1fr);
+      gap:clamp(1rem, 4vw, 4rem);
+      align-items:end;
+      height:100%;
+    }
+    .diag-line{
+      position:absolute;
+      inset:auto auto 14% 35%;
+      width:min(34vw, 28rem);
+      height:1px;
+      background:linear-gradient(90deg, rgba(212,175,55,.15), var(--gold-accent), rgba(212,175,55,.12));
+      transform:rotate(-16deg);
+      transform-origin:left center;
+      opacity:.9;
+    }
+    .proposal-panel{
+      position:relative;
+      padding:clamp(1rem, 2vw, 1.5rem) 0 0;
+    }
+    .proposal-panel .logo-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.96), rgba(249,245,252,.98));
+    }
+
+    .s6{
+      background:
+        radial-gradient(circle at 55% 15%, rgba(212,175,55,.12), transparent 16%),
+        radial-gradient(circle at 15% 85%, rgba(195,155,211,.2), transparent 18%),
+        linear-gradient(135deg, #250547 0%, #3B0A6E 45%, #5a159d 100%);
+    }
+    .s6 .layout{
+      display:grid;
+      grid-template-columns:minmax(0,.9fr) minmax(0,1.05fr);
+      gap:clamp(1rem,4vw,4rem);
+      align-items:center;
+      height:100%;
+    }
+    .ghost-card{
+      position:relative;
+      padding:clamp(1rem, 2vw, 1.5rem);
+      border-radius:calc(var(--radius) * 1.1);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+    .ghost-card img{
+      filter:grayscale(1) brightness(1.12) contrast(.88);
+      opacity:.3;
+    }
+
+    .s7{
+      background:
+        radial-gradient(circle at 82% 16%, rgba(155,89,182,.18), transparent 11%),
+        radial-gradient(circle at 15% 87%, rgba(195,155,211,.18), transparent 12%),
+        linear-gradient(180deg, #FFFFFF 0%, #FBF8FD 100%);
+    }
+    .s7 .layout{
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+      gap:clamp(.8rem, 1.5vw, 1.35rem);
+      height:100%;
+    }
+    .logo-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
+      gap:clamp(.9rem, 1.2vw, 1.25rem);
+      align-content:start;
+    }
+    .mini-card{
+      min-height:0;
+      padding:clamp(.9rem, 1.2vw, 1.2rem);
+      border-radius:1.2rem;
+      background:#fff;
+      border:1px solid rgba(59,10,110,.08);
+      box-shadow:0 .9rem 1.8rem rgba(59,10,110,.06);
+      display:grid;
+      gap:.85rem;
+    }
+    .mini-card .variant{
+      font-size:clamp(.72rem,.7rem + .2vw,.9rem);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--violet-mid);
+      margin:0;
+    }
+    .mini-card img{
+      width:100%;
+      min-width:120px;
+      max-height:clamp(8rem, 18vw, 11rem);
+      object-fit:contain;
+    }
+    .mono{
+      filter:grayscale(1) contrast(1.1) brightness(.55);
+    }
+    .secondary{
+      filter:saturate(.86) brightness(1.04);
+    }
+
+    .s8{
+      background:
+        linear-gradient(90deg, rgba(59,10,110,1) 0%, rgba(59,10,110,1) 30%, rgba(243,238,249,1) 30%, rgba(255,255,255,1) 100%);
+      color:var(--ink);
+    }
+    .s8::after{
+      background:radial-gradient(circle, rgba(155,89,182,.22), transparent 60%);
+      left:58%; bottom:-18vw;
+    }
+    .s8 .layout{
+      display:grid;
+      grid-template-columns:minmax(16rem, .8fr) minmax(0, 1.2fr);
+      gap:clamp(1rem, 4vw, 4rem);
+      align-items:start;
+      height:100%;
+    }
+    .palette-intro{
+      color:var(--white);
+      padding-top:clamp(1rem, 2vw, 2rem);
+      display:grid;
+      gap:1rem;
+      align-content:start;
+    }
+    .palette-grid{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:clamp(.9rem, 1.3vw, 1.2rem);
+      align-self:center;
+    }
+    .swatch-card{
+      border-radius:1.35rem;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 1.2rem 2rem rgba(59,10,110,.08);
+      aspect-ratio:3 / 1;
+      display:grid;
+      grid-template-columns:minmax(5rem, .85fr) minmax(0, 1.2fr);
+      min-height:0;
+    }
+    .swatch-chip{
+      height:100%;
+    }
+    .swatch-copy{
+      padding:clamp(.75rem, 1vw, 1rem);
+      display:grid;
+      align-content:center;
+      gap:.24rem;
+      background:#fff;
+    }
+    .swatch-copy h4{
+      margin:0;
+      font-size:clamp(.96rem, .9rem + .3vw, 1.12rem);
+      color:var(--violet-deep);
+    }
+    .swatch-copy p{
+      margin:0;
+      font-size:clamp(.78rem, .74rem + .18vw, .92rem);
+      color:var(--muted);
+      line-height:1.25;
+    }
+
+    .s9{
+      background:
+        radial-gradient(circle at 10% 18%, rgba(195,155,211,.18), transparent 14%),
+        radial-gradient(circle at 88% 80%, rgba(106,13,173,.1), transparent 12%),
+        linear-gradient(180deg, #FFFFFF 0%, #FCFAFE 100%);
+    }
+    .s9 .layout{
+      display:grid;
+      grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
+      gap:clamp(1rem, 3.8vw, 3.5rem);
+      align-items:center;
+      height:100%;
+    }
+    .type-wall{
+      display:grid;
+      gap:clamp(.8rem,1vw,1rem);
+      align-content:start;
+    }
+    .type-big{
+      font-family:var(--display-font);
+      font-size:clamp(4rem, 11vw, 10rem);
+      line-height:.86;
+      letter-spacing:-.06em;
+      color:var(--violet-deep);
+      margin:0;
+    }
+    .type-caption{
+      margin:0;
+      font-size:clamp(.82rem,.76rem + .18vw,.95rem);
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--violet-mid);
+    }
+    .type-stack{
+      display:grid;
+      gap:clamp(.8rem, 1vw, 1rem);
+    }
+    .type-row{
+      border-radius:1.2rem;
+      border:1px solid rgba(59,10,110,.08);
+      padding:clamp(.9rem, 1.25vw, 1.15rem);
+      background:#fff;
+      box-shadow:0 .7rem 1.4rem rgba(59,10,110,.05);
+    }
+    .type-row h4{
+      margin:0;
+      color:var(--violet-mid);
+      font-size:clamp(.74rem,.7rem + .18vw,.88rem);
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+    .type-row p{
+      margin:.35rem 0 0;
+      color:var(--violet-deep);
+      line-height:1;
+    }
+    .type-row .xl{font-family:var(--display-font); font-size:clamp(2rem,3vw,3rem); font-weight:800;}
+    .type-row .lg{font-size:clamp(1.35rem,2vw,1.9rem); font-weight:600;}
+    .type-row .md{font-size:clamp(1rem,1.2vw,1.15rem); font-weight:500; line-height:1.35;}
+    .type-row .sm{font-size:clamp(.82rem,1vw,.95rem); font-weight:500; letter-spacing:.08em; text-transform:uppercase;}
+    .alphabet{
+      margin-top:clamp(.2rem, .5vw, .5rem);
+      font-size:clamp(.86rem, .82rem + .18vw, 1rem);
+      line-height:1.5;
+      color:var(--muted);
+      word-break:break-word;
+    }
+
+    .s10{
+      background:
+        radial-gradient(circle at 16% 16%, rgba(195,155,211,.2), transparent 18%),
+        radial-gradient(circle at 84% 72%, rgba(212,175,55,.12), transparent 18%),
+        linear-gradient(135deg, #240441 0%, #3B0A6E 42%, #5C0EA1 100%);
+    }
+    .s10::after{
+      background:radial-gradient(circle, rgba(212,175,55,.34), transparent 58%);
+      left:-8vw;
+      bottom:-20vw;
+    }
+    .s10 .layout{
+      display:grid;
+      align-content:center;
+      justify-items:center;
+      text-align:center;
+      gap:clamp(.95rem, 1.5vw, 1.2rem);
+      height:100%;
+    }
+    .s10 .slide-title{
+      font-size:clamp(3rem, 8vw, 8.6rem);
+      max-width:10ch;
+      color:#fff;
+    }
+    .gold-line{
+      width:min(16rem, 34vw);
+      height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+      position:relative;
+      overflow:hidden;
+    }
+    .gold-line::after{
+      content:"";
+      position:absolute;
+      inset:-100% auto -100% -30%;
+      width:30%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.85), transparent);
+      filter:blur(.2rem);
+    }
+    .slide.active .gold-line::after{
+      animation:shimmer 1500ms ease forwards;
+      animation-delay:480ms;
+    }
+
+    .stack{
+      display:grid;
+      gap:clamp(.7rem, 1vw, 1rem);
+      align-content:start;
+    }
+    .split-note{
+      display:grid;
+      gap:clamp(.7rem, 1vw, 1rem);
+      align-content:start;
+    }
+
+    @media (max-width: 1280px){
+      .s1 .cover-grid,
+      .s2 .layout,
+      .s5 .layout,
+      .s6 .layout,
+      .s8 .layout,
+      .s9 .layout{
+        gap:clamp(.9rem,2.4vw,2rem);
+      }
+    }
+
+    @media (max-width: 1024px){
+      .slide{
+        padding:clamp(1rem, 4vw, 2rem);
+      }
+      .s1 .cover-grid,
+      .s2 .layout,
+      .s5 .layout,
+      .s6 .layout,
+      .s8 .layout,
+      .s9 .layout{
+        grid-template-columns:1fr;
+      }
+      .s4 .layout{
+        grid-template-columns:1fr;
+      }
+      .transition-arrow{
+        width:clamp(4.5rem, 18vw, 7rem);
+        transform:rotate(90deg);
+      }
+      .palette-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+      .s8{
+        background:
+          linear-gradient(180deg, rgba(59,10,110,1) 0%, rgba(59,10,110,1) 32%, rgba(243,238,249,1) 32%, rgba(255,255,255,1) 100%);
+      }
+      .diag-line{display:none;}
+      .s1 .right-note{justify-self:start; align-self:start;}
+    }
+
+    @media (max-width: 768px){
+      .slide{
+        padding:clamp(.95rem, 4.2vw, 1.4rem);
+      }
+      .nav-zone{
+        width:40px;
+      }
+      .progress{
+        background:rgba(255,255,255,.14);
+        padding:.55rem .8rem;
+      }
+      .progress-line{display:none;}
+      .dot{
+        width:.58rem;
+        height:.58rem;
+      }
+      .palette-grid{
+        grid-template-columns:1fr;
+      }
+      .swatch-card{
+        aspect-ratio:2 / 1;
+        grid-template-columns:1fr 1.2fr;
+      }
+      .logo-grid{
+        grid-template-columns:1fr;
+      }
+      .s1 .slide-title,
+      .s10 .slide-title{
+        max-width:100%;
+      }
+      .type-big{
+        font-size:clamp(3rem, 15vw, 6rem);
+      }
+      .counter{
+        font-size:.82rem;
+      }
+    }
+
+    @media (max-width: 480px){
+      .badge, .micro-chip{
+        width:100%;
+      }
+      .swatch-card{
+        grid-template-columns:1fr;
+        aspect-ratio:2 / 1;
+      }
+      .swatch-chip{min-height:5.2rem;}
+      .origin-card,
+      .logo-card{
+        padding:.95rem;
+      }
+      .fullscreen-btn{
+        top:.75rem; right:.75rem;
+      }
+    }
+
+    @media (min-width: 1440px){
+      .slide{
+        padding-inline:clamp(3rem, 5vw, 6rem);
+      }
+      .progress{
+        transform:scale(1.02);
+      }
+    }
+
+    @media (min-width: 1920px){
+      .slide{
+        padding-inline:clamp(4rem, 6vw, 8rem);
+      }
+      .badge{
+        transform:translateZ(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *, *::before, *::after{
+        animation-duration:0.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:0.01ms !important;
+        scroll-behavior:auto !important;
+      }
+      .grain{display:none;}
+    }
+  </style>
+</head>
+<body>
+  <div class="presentation" id="presentation" aria-label="Presentación interactiva de evolución de identidad">
+    <div class="grain" aria-hidden="true"></div>
+
+    <button class="nav-zone prev" id="prevZone" aria-label="Diapositiva anterior"></button>
+    <button class="nav-zone next" id="nextZone" aria-label="Diapositiva siguiente"></button>
+
+    <button class="fullscreen-btn" id="fullscreenBtn" aria-label="Pantalla completa" title="Pantalla completa">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="8 3 3 3 3 8"></polyline>
+        <line x1="3" y1="3" x2="9" y2="9"></line>
+        <polyline points="16 3 21 3 21 8"></polyline>
+        <line x1="15" y1="9" x2="21" y2="3"></line>
+        <polyline points="8 21 3 21 3 16"></polyline>
+        <line x1="3" y1="21" x2="9" y2="15"></line>
+        <polyline points="16 21 21 21 21 16"></polyline>
+        <line x1="15" y1="15" x2="21" y2="21"></line>
+      </svg>
+    </button>
+
+    <div class="hint" id="hint">Desliza o usa las flechas para navegar</div>
+
+    <div class="slides" id="slides">
+      <section class="slide s1 theme-dark active" data-title="Portada" aria-hidden="false">
+        <div class="orb one" aria-hidden="true"></div>
+        <div class="orb two" aria-hidden="true"></div>
+        <div class="arc" aria-hidden="true"></div>
+        <div class="cover-grid">
+          <div class="content stack">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:100ms">Migración de identidad</p>
+              <p class="counter animate" style="--d:180ms">01 / 10</p>
+            </div>
+            <h1 class="slide-title clip-reveal" style="--d:220ms">Fisioterapia a tu alcance</h1>
+            <p class="slide-subtitle animate" style="--d:420ms">Evolución de Identidad de Marca</p>
+            <p class="slide-name animate" style="--d:520ms">Mariana Rosas</p>
+          </div>
+          <div class="right-note">
+            <div class="badge animate" style="--d:620ms">Premium · Clínica · Comercial</div>
+            <p class="body-note animate" style="--d:760ms">Una presentación pensada para elevar la percepción visual de la marca sin perder cercanía, recordación ni claridad médica.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s2 theme-light" data-title="Punto de partida" aria-hidden="true">
+        <div class="layout">
+          <div class="stack">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms">Punto de partida</p>
+              <p class="counter animate" style="--d:180ms">02 / 10</p>
+            </div>
+            <div class="word-stream" aria-label="Una marca con historia. Una identidad con futuro.">
+              <span>Una</span><span>marca</span><span>con</span><span>historia.</span><span>Una</span><span>identidad</span><span>con</span><span>futuro.</span>
+            </div>
+            <div class="micro-notes">
+              <div class="micro-chip animate" style="--d:660ms">Confianza ya construida en consulta</div>
+              <div class="micro-chip animate" style="--d:760ms">Mayor solidez visual para crecer</div>
+              <div class="micro-chip animate" style="--d:860ms">Más presencia sin perder calidez</div>
+            </div>
+          </div>
+
+          <div class="shape-stage">
+            <svg class="draw-line animate" style="--d:260ms" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="shapeGrad" x1="88" y1="92" x2="430" y2="430" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6A0DAD"/>
+                  <stop offset="1" stop-color="#C39BD3"/>
+                </linearGradient>
+              </defs>
+              <circle cx="260" cy="260" r="178" stroke="url(#shapeGrad)" stroke-width="1.8"/>
+              <path d="M146 188C170 137 217 104 274 104C364 104 428 176 428 260C428 344 363 416 280 416C221 416 179 391 148 336" stroke="url(#shapeGrad)" stroke-width="16" stroke-linecap="round"/>
+              <path d="M176 218C197 245 228 260 270 260C313 260 344 275 365 301" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="150" cy="336" r="24" fill="#6A0DAD" fill-opacity=".1" stroke="#6A0DAD"/>
+              <circle cx="368" cy="300" r="15" fill="#D4AF37" fill-opacity=".18" stroke="#D4AF37"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s3 theme-light" data-title="Identidad anterior" aria-hidden="true">
+        <div class="layout">
+          <div class="top-meta">
+            <p class="eyebrow animate" style="--d:120ms">Identidad de origen</p>
+            <p class="counter animate" style="--d:180ms">03 / 10</p>
+          </div>
+
+          <div class="origin-wrap">
+            <div class="origin-card animate scale-reveal" style="--d:260ms">
+              <img src="logoold.png" alt="Logotipo original de Fisioterapia a tu alcance — Mariana Rosas" loading="lazy" decoding="async" />
+            </div>
+            <div class="origin-line animate" style="--d:560ms"></div>
+          </div>
+
+          <p class="body-note animate" style="--d:720ms; justify-self:center; text-align:center;">El punto de partida tiene reconocimiento local y una intención clara de servicio. La migración propone llevarlo a un lenguaje visual más preciso, más sólido y más memorable.</p>
+        </div>
+      </section>
+
+      <section class="slide s4 theme-dark" data-title="Propuesta A" aria-hidden="true">
+        <div class="layout">
+          <div class="split-note">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms">Antes</p>
+              <p class="counter animate" style="--d:180ms">04 / 10</p>
+            </div>
+            <div class="logo-card dark animate scale-reveal" style="--d:260ms">
+              <p class="logo-tag">Identidad de origen</p>
+              <img src="logoold.png" alt="Logotipo anterior" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="transition-arrow animate" style="--d:520ms">
+            <svg class="draw-line" viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M10 70H126" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M96 32L134 70L96 108" stroke="#D4AF37" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="split-note">
+            <div class="badge animate" style="--d:640ms">Propuesta A · Símbolo clínico</div>
+            <div class="logo-card animate scale-reveal" style="--d:760ms">
+              <p class="logo-tag">Nueva identidad</p>
+              <img src="logo1.png" alt="Propuesta A: símbolo de serpiente y columna en violeta" loading="lazy" decoding="async" />
+              <p class="logo-note">Una lectura más simbólica, médica y contundente. La columna se vuelve emblema; la serpiente aporta memoria visual y carácter.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s5 theme-light" data-title="Propuesta B" aria-hidden="true">
+        <div class="layout">
+          <div class="diag-line animate" style="--d:540ms" aria-hidden="true"></div>
+
+          <div class="stack">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms">Transición tipográfica</p>
+              <p class="counter animate" style="--d:180ms">05 / 10</p>
+            </div>
+            <div class="logo-card animate" style="--d:300ms">
+              <p class="logo-tag">Antes</p>
+              <img src="logoold.png" alt="Identidad de origen" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="proposal-panel stack">
+            <div class="badge animate" style="--d:520ms">Propuesta B · Claridad editorial</div>
+            <h2 class="slide-title clip-reveal" style="--d:620ms; font-size:clamp(2.4rem, 5.5vw, 5.8rem); color:var(--violet-deep); max-width:10ch;">La marca se ordena sin perder cercanía.</h2>
+            <div class="logo-card animate scale-reveal" style="--d:760ms">
+              <p class="logo-tag">Nueva identidad</p>
+              <img src="logo2.png" alt="Propuesta B: logotipo tipográfico refinado en violeta" loading="lazy" decoding="async" />
+              <p class="logo-note">Una solución más limpia, legible y escalable. El peso recae en la palabra y en una presencia visual más controlada.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s6 theme-dark" data-title="Propuesta C" aria-hidden="true">
+        <div class="layout">
+          <div class="stack">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms">Transición Propuesta C</p>
+              <p class="counter animate" style="--d:180ms">06 / 10</p>
+            </div>
+            <h2 class="slide-title clip-reveal" style="--d:300ms; font-size:clamp(2.6rem, 5.8vw, 6rem); color:#fff; max-width:10ch;">Más autoridad. Más gesto. Más impacto.</h2>
+            <div class="badge animate" style="--d:520ms">Propuesta C · Emblema dominante</div>
+          </div>
+
+          <div class="stack">
+            <div class="ghost-card animate" style="--d:420ms">
+              <p class="logo-tag" style="color:rgba(255,255,255,.58)">Origen desaturado</p>
+              <img src="logoold.png" alt="Identidad anterior en transición" loading="lazy" decoding="async" />
+            </div>
+
+            <div class="logo-card animate scale-reveal" style="--d:720ms">
+              <p class="logo-tag">Nueva identidad</p>
+              <img src="logo3.png" alt="Propuesta C: emblema alado con rayo en violeta" loading="lazy" decoding="async" />
+              <p class="logo-note">La lectura pasa de servicio local a sello distintivo. Es una ruta más expresiva, más firme y con vocación de marca protagonista.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s7 theme-light" data-title="Sistema de logotipos" aria-hidden="true">
+        <div class="layout">
+          <div class="top-meta">
+            <p class="eyebrow animate" style="--d:120ms">Sistema de logotipos</p>
+            <p class="counter animate" style="--d:180ms">07 / 10</p>
+          </div>
+
+          <h2 class="slide-title clip-reveal" style="--d:280ms; font-size:clamp(2.2rem, 5vw, 4.8rem); color:var(--violet-deep); max-width:12ch;">Tres rutas. Un mismo territorio visual.</h2>
+
+          <div class="logo-grid">
+            <article class="mini-card animate" style="--d:420ms">
+              <p class="variant">A · Principal</p>
+              <img src="logo1.png" alt="Propuesta A principal" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:540ms">
+              <p class="variant">A · Secundaria</p>
+              <img class="secondary" src="logo1.png" alt="Propuesta A secundaria" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:660ms">
+              <p class="variant">A · Monocromática</p>
+              <img class="mono" src="logo1.png" alt="Propuesta A monocromática" loading="lazy" decoding="async" />
+            </article>
+
+            <article class="mini-card animate" style="--d:780ms">
+              <p class="variant">B · Principal</p>
+              <img src="logo2.png" alt="Propuesta B principal" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:900ms">
+              <p class="variant">B · Secundaria</p>
+              <img class="secondary" src="logo2.png" alt="Propuesta B secundaria" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:1020ms">
+              <p class="variant">B · Monocromática</p>
+              <img class="mono" src="logo2.png" alt="Propuesta B monocromática" loading="lazy" decoding="async" />
+            </article>
+
+            <article class="mini-card animate" style="--d:1140ms">
+              <p class="variant">C · Principal</p>
+              <img src="logo3.png" alt="Propuesta C principal" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:1260ms">
+              <p class="variant">C · Secundaria</p>
+              <img class="secondary" src="logo3.png" alt="Propuesta C secundaria" loading="lazy" decoding="async" />
+            </article>
+            <article class="mini-card animate" style="--d:1380ms">
+              <p class="variant">C · Monocromática</p>
+              <img class="mono" src="logo3.png" alt="Propuesta C monocromática" loading="lazy" decoding="async" />
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s8" data-title="Paleta de color" aria-hidden="true">
+        <div class="layout">
+          <div class="palette-intro">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms; color:rgba(255,255,255,.68)">Paleta de color</p>
+              <p class="counter animate" style="--d:180ms; color:rgba(255,255,255,.72)">08 / 10</p>
+            </div>
+            <h2 class="slide-title clip-reveal" style="--d:280ms; font-size:clamp(2.5rem, 5.4vw, 5.8rem); color:#fff; max-width:7ch;">Un sistema cromático con presencia y precisión.</h2>
+            <span class="line-accent animate" style="--d:520ms"></span>
+            <p class="body-note animate" style="--d:660ms; color:rgba(255,255,255,.74);">Violetas profundos para autoridad, lilas para cercanía y un dorado mínimo para jerarquía fina.</p>
+          </div>
+
+          <div class="palette-grid">
+            <article class="swatch-card swatch" style="--d:340ms">
+              <div class="swatch-chip" style="background:#3B0A6E"></div>
+              <div class="swatch-copy">
+                <h4>Violeta profundo</h4>
+                <p>#3B0A6E · Fondo maestro</p>
+              </div>
+            </article>
+            <article class="swatch-card swatch" style="--d:440ms">
+              <div class="swatch-chip" style="background:#6A0DAD"></div>
+              <div class="swatch-copy">
+                <h4>Morado real</h4>
+                <p>#6A0DAD · Acento de energía</p>
+              </div>
+            </article>
+            <article class="swatch-card swatch" style="--d:540ms">
+              <div class="swatch-chip" style="background:#9B59B6"></div>
+              <div class="swatch-copy">
+                <h4>Morado medio</h4>
+                <p>#9B59B6 · Continuidad visual</p>
+              </div>
+            </article>
+            <article class="swatch-card swatch" style="--d:640ms">
+              <div class="swatch-chip" style="background:#C39BD3"></div>
+              <div class="swatch-copy">
+                <h4>Lila suave</h4>
+                <p>#C39BD3 · Respiración y cercanía</p>
+              </div>
+            </article>
+            <article class="swatch-card swatch" style="--d:740ms">
+              <div class="swatch-chip" style="background:#F3EEF9"></div>
+              <div class="swatch-copy">
+                <h4>Lavanda pálido</h4>
+                <p>#F3EEF9 · Base luminosa</p>
+              </div>
+            </article>
+            <article class="swatch-card swatch" style="--d:840ms">
+              <div class="swatch-chip" style="background:#D4AF37"></div>
+              <div class="swatch-copy">
+                <h4>Dorado fino</h4>
+                <p>#D4AF37 · Jerarquía mínima</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s9 theme-light" data-title="Sistema tipográfico" aria-hidden="true">
+        <div class="layout">
+          <div class="type-wall">
+            <div class="top-meta">
+              <p class="eyebrow animate" style="--d:120ms">Sistema tipográfico</p>
+              <p class="counter animate" style="--d:180ms">09 / 10</p>
+            </div>
+            <p class="type-caption animate" style="--d:320ms">Titular editorial condensado</p>
+            <h2 class="type-big clip-reveal" style="--d:420ms">Aa</h2>
+            <p class="body-note animate" style="--d:560ms">Una combinación de alto contraste entre un display estrecho para títulos y una sans limpia para lectura, interfaz y soporte clínico.</p>
+            <p class="alphabet animate" style="--d:700ms">ABCDEFGHIJKLMNÑOPQRSTUVWXYZ · abcdefghijklmnñopqrstuvwxyz · 0123456789</p>
+          </div>
+
+          <div class="type-stack">
+            <div class="type-row animate" style="--d:420ms">
+              <h4>Titular</h4>
+              <p class="xl">Fisioterapia a tu alcance</p>
+            </div>
+            <div class="type-row animate" style="--d:540ms">
+              <h4>Subtítulo</h4>
+              <p class="lg">Evolución de identidad</p>
+            </div>
+            <div class="type-row animate" style="--d:660ms">
+              <h4>Cuerpo</h4>
+              <p class="md">Una lectura clara, humana y controlada para piezas clínicas, comerciales y de presentación.</p>
+            </div>
+            <div class="type-row animate" style="--d:780ms">
+              <h4>Caption</h4>
+              <p class="sm">Jerarquía fina · Etiquetas · Sistema</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide s10 theme-dark" data-title="Cierre" aria-hidden="true">
+        <div class="layout">
+          <p class="eyebrow animate" style="--d:120ms">Cierre</p>
+          <h2 class="slide-title clip-reveal" style="--d:240ms">Una nueva identidad. El mismo propósito.</h2>
+          <div class="gold-line animate" style="--d:460ms"></div>
+          <p class="slide-subtitle animate" style="--d:620ms; color:rgba(255,255,255,.76)">Fisioterapia a tu alcance</p>
+          <p class="slide-name animate" style="--d:740ms; color:var(--lilac-soft)">Mariana Rosas</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="ui" aria-hidden="false">
+      <div class="progress" id="progress">
+        <div class="progress-line" aria-hidden="true">
+          <div class="progress-line-fill" id="progressFill"></div>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const deck = document.getElementById('slides');
+      const dotsWrap = document.getElementById('dots');
+      const progressFill = document.getElementById('progressFill');
+      const hint = document.getElementById('hint');
+      const prevZone = document.getElementById('prevZone');
+      const nextZone = document.getElementById('nextZone');
+      const fullscreenBtn = document.getElementById('fullscreenBtn');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let current = 0;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let isAnimating = false;
+
+      function buildDots() {
+        slides.forEach((slide, index) => {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (index === 0 ? ' active' : '');
+          dot.type = 'button';
+          dot.setAttribute('aria-label', `Ir a la diapositiva ${index + 1}`);
+          dot.dataset.index = index;
+          dot.addEventListener('click', () => goTo(index));
+          dotsWrap.appendChild(dot);
+        });
+      }
+
+      function replayAnimations(slide) {
+        const animated = slide.querySelectorAll('.animate, .clip-reveal, .scale-reveal, .swatch, .draw-line');
+        animated.forEach((el) => {
+          el.style.animation = 'none';
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+      }
+
+      function updateUI() {
+        slides.forEach((slide, index) => {
+          const isActive = index === current;
+          slide.classList.toggle('active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          const counter = slide.querySelector('.counter');
+          if (counter) counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+        });
+
+        [...dotsWrap.children].forEach((dot, index) => {
+          dot.classList.toggle('active', index === current);
+        });
+
+        const progressPercent = ((current + 1) / slides.length) * 100;
+        progressFill.style.width = `${progressPercent}%`;
+        deck.style.transform = `translate3d(${-current * 100}vw, 0, 0)`;
+
+        replayAnimations(slides[current]);
+      }
+
+      function goTo(index) {
+        if (index < 0 || index > slides.length - 1 || index === current || isAnimating) return;
+        isAnimating = true;
+        current = index;
+        updateUI();
+        window.setTimeout(() => { isAnimating = false; }, prefersReducedMotion ? 20 : 760);
+      }
+
+      function next() {
+        if (current < slides.length - 1) goTo(current + 1);
+      }
+
+      function prev() {
+        if (current > 0) goTo(current - 1);
+      }
+
+      function toggleFullscreen() {
+        const root = document.documentElement;
+        if (!document.fullscreenElement) {
+          root.requestFullscreen?.().catch(() => {});
+        } else {
+          document.exitFullscreen?.().catch(() => {});
+        }
+      }
+
+      function onKeydown(event) {
+        if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+          event.preventDefault();
+          next();
+        }
+        if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+          event.preventDefault();
+          prev();
+        }
+        if (event.key.toLowerCase() === 'f') {
+          toggleFullscreen();
+        }
+      }
+
+      function onTouchStart(event) {
+        touchStartX = event.changedTouches[0].screenX;
+      }
+
+      function onTouchEnd(event) {
+        touchEndX = event.changedTouches[0].screenX;
+        const delta = touchEndX - touchStartX;
+        const threshold = 50;
+        if (Math.abs(delta) < threshold) return;
+        if (delta < 0) next();
+        if (delta > 0) prev();
+      }
+
+      function hideHint() {
+        setTimeout(() => hint.classList.add('hide'), 3000);
+      }
+
+      buildDots();
+      updateUI();
+      hideHint();
+
+      prevZone.addEventListener('click', prev);
+      nextZone.addEventListener('click', next);
+      fullscreenBtn.addEventListener('click', toggleFullscreen);
+      window.addEventListener('keydown', onKeydown);
+      deck.addEventListener('touchstart', onTouchStart, { passive: true });
+      deck.addEventListener('touchend', onTouchEnd, { passive: true });
+
+      deck.addEventListener('click', (event) => {
+        const interactive = event.target.closest('button, a');
+        if (interactive) return;
+        if (window.innerWidth <= 768) return;
+        const x = event.clientX;
+        if (x > window.innerWidth * 0.62) next();
+        if (x < window.innerWidth * 0.38) prev();
+      });
+
+      window.addEventListener('resize', () => {
+        deck.style.transition = 'none';
+        deck.style.transform = `translate3d(${-current * 100}vw, 0, 0)`;
+        requestAnimationFrame(() => {
+          deck.style.transition = '';
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
