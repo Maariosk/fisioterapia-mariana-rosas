@@ -246,4 +246,81 @@ document.addEventListener('keydown', (event) => {
     closeLightbox();
   }
 });
+
+const brandBadge = document.querySelector('.brand-badge');
+const mobileBadgeQuery = window.matchMedia('(max-width: 768px)');
+let brandBadgeTimer = null;
+
+function closeBrandBadge() {
+  if (!brandBadge) return;
+  brandBadge.classList.remove('is-open');
+  brandBadge.setAttribute('aria-expanded', 'false');
+}
+
+function openBrandBadge() {
+  if (!brandBadge || !mobileBadgeQuery.matches) return;
+
+  window.clearTimeout(brandBadgeTimer);
+  brandBadge.classList.add('is-open');
+  brandBadge.setAttribute('aria-expanded', 'true');
+
+  brandBadgeTimer = window.setTimeout(() => {
+    closeBrandBadge();
+  }, 3000);
+}
+
+function syncBrandBadgeMode() {
+  if (!brandBadge) return;
+
+  if (mobileBadgeQuery.matches) {
+    brandBadge.setAttribute('role', 'button');
+    brandBadge.setAttribute('tabindex', '0');
+    brandBadge.setAttribute('aria-expanded', brandBadge.classList.contains('is-open') ? 'true' : 'false');
+  } else {
+    window.clearTimeout(brandBadgeTimer);
+    brandBadge.classList.remove('is-open');
+    brandBadge.removeAttribute('role');
+    brandBadge.removeAttribute('tabindex');
+    brandBadge.removeAttribute('aria-expanded');
+  }
+}
+
+if (brandBadge) {
+  brandBadge.addEventListener('click', (event) => {
+    if (!mobileBadgeQuery.matches) return;
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (brandBadge.classList.contains('is-open')) {
+      closeBrandBadge();
+      return;
+    }
+
+    openBrandBadge();
+  });
+
+  brandBadge.addEventListener('keydown', (event) => {
+    if (!mobileBadgeQuery.matches) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+
+      if (brandBadge.classList.contains('is-open')) {
+        closeBrandBadge();
+        return;
+      }
+
+      openBrandBadge();
+    }
+  });
+
+  if (typeof mobileBadgeQuery.addEventListener === 'function') {
+    mobileBadgeQuery.addEventListener('change', syncBrandBadgeMode);
+  } else {
+    window.addEventListener('resize', syncBrandBadgeMode);
+  }
+
+  syncBrandBadgeMode();
+}
+
 })();
