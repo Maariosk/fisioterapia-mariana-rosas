@@ -37,6 +37,8 @@
   }
 
   function replayAnimations(slide) {
+    if (prefersReducedMotion || window.innerWidth <= 1024) return;
+
     const targets = slide.querySelectorAll('.animate, .clip-reveal, .scale-reveal, .swatch');
     targets.forEach((node) => {
       node.style.animation = 'none';
@@ -248,11 +250,12 @@ document.addEventListener('keydown', (event) => {
 });
 
 const brandBadge = document.querySelector('.brand-badge');
-const mobileBadgeQuery = window.matchMedia('(max-width: 768px)');
+const mobileBadgeQuery = window.matchMedia('(max-width: 1024px) and (pointer: coarse)');
 let brandBadgeTimer = null;
 
 function closeBrandBadge() {
   if (!brandBadge) return;
+  window.clearTimeout(brandBadgeTimer);
   brandBadge.classList.remove('is-open');
   brandBadge.setAttribute('aria-expanded', 'false');
 }
