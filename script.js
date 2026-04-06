@@ -181,4 +181,69 @@
   deck.addEventListener('touchend', onTouchEnd, { passive: true });
   deck.addEventListener('click', handleDeckClick);
   window.addEventListener('resize', onResize);
+
+  const lightbox = document.getElementById('imageLightbox');
+const lightboxImg = document.getElementById('imageLightboxImg');
+const lightboxClose = document.getElementById('imageLightboxClose');
+const lightboxBackdrop = document.getElementById('imageLightboxBackdrop');
+
+const zoomableSelector = [
+  '.physical-hero__image',
+  '.media-panel img',
+  '.ghost-card img',
+  '.mockup__brand-band img',
+  '.mockup__floating-brand img',
+  '.avatar-ring img',
+  '.before-mini img'
+].join(', ');
+
+document.querySelectorAll(zoomableSelector).forEach((img) => {
+  img.setAttribute('draggable', 'false');
+});
+
+document.addEventListener('contextmenu', (event) => {
+  if (
+    event.target.closest(zoomableSelector) ||
+    event.target.closest('#imageLightboxImg')
+  ) {
+    event.preventDefault();
+  }
+});
+
+document.addEventListener('dragstart', (event) => {
+  if (
+    event.target.closest(zoomableSelector) ||
+    event.target.closest('#imageLightboxImg')
+  ) {
+    event.preventDefault();
+  }
+});
+
+document.addEventListener('click', (event) => {
+  const target = event.target.closest(zoomableSelector);
+  if (!target) return;
+
+  lightboxImg.src = target.currentSrc || target.src;
+  lightboxImg.alt = target.alt || '';
+  lightbox.classList.add('is-open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('is-open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightboxImg.src = '';
+  lightboxImg.alt = '';
+  document.body.style.overflow = '';
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxBackdrop.addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+    closeLightbox();
+  }
+});
 })();
